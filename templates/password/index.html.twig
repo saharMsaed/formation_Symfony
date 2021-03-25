@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}- Mise à jour mot de passe{% endblock %}
+
+{% block body %}
+<h1> Modifier mon mot de passe </h1>
+{% if (notification) %}
+    <div class="alert alert-info">  {{ notification }} </div>
+{% endif %}
+<a href="{{ path('account') }}"> Retour à mon compte </a>
+<hr>
+{{ form(form) }}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}- Détails : {{ post.title }}{% endblock %}
+
+{% block body %}
+<h1> Détails : {{ post.title }}</h1>
+<hr>
+
+<div class="text-muted">
+    Crée(e) le {{ post.creationDate|date('m/Y')}} par {{ post.creator.firstname}} {{ post.creator.lastname}} 
+</div>
+<p> {{ post.shortDescription}} </p>
+<p> {{ post.description}} </p>
+<nav class="blog-pagination mt-2" aria-label="Pagination">
+    {% for tag in post.tags %}
+    <a class="btn btn-outline-primary" href="#">{{ tag.name }}</a>   
+    {% endfor %}   
+</nav>
+<hr>
+<a href="{{ path('post_creator_edit', {'id': post.id}) }}" class="btn btn-info">Modifier</a>
+<a href="{{ path('post_creator_delete', {'id': post.id}) }}" class="btn btn-secondary">Supprimer</a>
+<a href="{{ path('post_list') }}" class="btn btn-primary">Retour</a>
+{% endblock %}
